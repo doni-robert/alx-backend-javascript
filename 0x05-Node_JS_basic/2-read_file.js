@@ -8,21 +8,22 @@ function countStudents(path) {
   try {
     const data = fs.readFileSync(path, { encoding: 'utf8' });
 
-    const lines = data.split('\n');
+    const lines = (data.split('\n')).slice(1);
 
     const items = {};
 
-    for (const line of lines.slice(1)) {
+    for (const line of lines) {
       const rowData = line.split(',');
 
       if (rowData[3] in items) {
-        items[rowData[3]].push(rowData[0]);
+        items[rowData[3]].push(' ' + rowData[0]);
       } else {
         items[rowData[3]] = [];
+        items[rowData[3]].push(' ' + rowData[0]);
       }
     }
 
-    console.log(`Number of students: ${lines.length - 1}`);
+    console.log(`Number of students: ${lines.length}`);
 
     for (const item in items) {
       if (Object.prototype.hasOwnProperty.call(items, item)) {
