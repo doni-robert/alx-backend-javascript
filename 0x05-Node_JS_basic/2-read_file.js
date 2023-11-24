@@ -16,10 +16,10 @@ function countStudents(path) {
       const rowData = line.split(',');
 
       if (rowData[3] in items) {
-        items[rowData[3]].push(' ' + rowData[0]);
+        items[rowData[3]].push(` ${rowData[0]}`);
       } else {
         items[rowData[3]] = [];
-        items[rowData[3]].push(' ' + rowData[0]);
+        items[rowData[3]].push(rowData[0]);
       }
     }
 
@@ -27,11 +27,11 @@ function countStudents(path) {
 
     for (const item in items) {
       if (Object.prototype.hasOwnProperty.call(items, item)) {
-        console.log(`Number of students in ${item}: ${items[item].length}. List:${items[item]}`);
+        console.log(`Number of students in ${item}: ${items[item].length}. List: ${items[item]}`);
       }
     }
   } catch (err) {
-    console.log(err);
+    throw new Error('Cannot load the database');
   }
 }
 
