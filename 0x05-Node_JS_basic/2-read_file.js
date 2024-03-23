@@ -1,7 +1,11 @@
 /**
+ * Counts the number of students in each group based on data from a CSV file.
  *
- *
+ * @param {string} path - The path to the CSV file containing student data.
+ * @throws {Error} - Throws an error if the database cannot be loaded.
+ * @returns {void}
  */
+
 const fs = require('fs');
 
 function countStudents(path) {
